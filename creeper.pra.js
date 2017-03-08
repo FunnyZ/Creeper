@@ -34,8 +34,8 @@ function getHtml(href, search, goalStr) {
 			res.on('end', function() {
 				$ = cheerio.load(pageData);
 				// 爬的目标对象
-				var goal = $(''+goalStr);
-
+				var goal = $('' + goalStr);
+			
 				for ( var i = 0; i < goal.length; i ++ ) {
 					// 获取地址
 					var src = goal[i].attribs.src;
@@ -110,22 +110,14 @@ function downloadImage(url) {
 	}
 }
 
-var pagemax = 20,
-	startPage = 15;
+var pagemax = 5,
+	startPage = 1;
 
 function start() {
 	console.log('开始连接----');
 	for ( var i = startPage; i <= pagemax; i ++ ) {
-		getHtml(queryHref, i);
+		getHtml(queryHref, i, goalStr);
 	}
 }
 
 start();
-
-
-
-
-
-
-
-
